@@ -1,4 +1,4 @@
--our project is using C# as a development environment, and an object orientated approach to game
+-our project is using C# as a development environment, and an object orientated approach to the game
 
 -we're modelling our game using a finite state machine, since the states of the game are distinct and can be easily defined
 
