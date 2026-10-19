@@ -42,6 +42,7 @@ public abstract class Fighter
     public void RemoveFromBoard() => Space = null;
 
     //Applies damage and returns the amount actually dealt
+    public int TakeDamage(int amount)
     {
         if (amount < 0) throw new ArgumentOutOfRangeException(nameof(amount));
         if (IsDefeated || amount == 0) return 0;
