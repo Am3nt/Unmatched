@@ -1,0 +1,9 @@
+*.vsidx
+*.sqlite
+*.db
+DataBaseTools/serviceAccountKey.json
+DataBaseTools/node_modules/
+/DataBase_Tools
+.vs/VSWorkspaceState.json
+.vs/VSWorkspaceState.json
+*.vsidx
