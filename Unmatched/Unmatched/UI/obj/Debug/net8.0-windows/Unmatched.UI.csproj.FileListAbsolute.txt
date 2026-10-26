@@ -1,0 +1,16 @@
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\bin\Debug\net8.0-windows\Unmatched.UI.exe
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\bin\Debug\net8.0-windows\Unmatched.UI.deps.json
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\bin\Debug\net8.0-windows\Unmatched.UI.runtimeconfig.json
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\bin\Debug\net8.0-windows\Unmatched.UI.dll
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\bin\Debug\net8.0-windows\Unmatched.UI.pdb
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatched.UI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatched.UI.AssemblyInfoInputs.cache
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatched.UI.AssemblyInfo.cs
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatched.UI.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatched.UI.sourcelink.json
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatched.UI.dll
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\refint\Unmatched.UI.dll
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatched.UI.pdb
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatched.UI.genruntimeconfig.cache
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\ref\Unmatched.UI.dll
+C:\Users\User\Documents\GitHub\Szoft_Projekt\UI\obj\Debug\net8.0-windows\Unmatche.10364916.Up2Date
