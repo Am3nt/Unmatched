@@ -1,6 +1,7 @@
 *.vsidx
 *.sqlite
 *.db
+*.vs
 DataBaseTools/serviceAccountKey.json
 DataBaseTools/node_modules/
 /DataBase_Tools
