@@ -5,6 +5,7 @@ namespace Unmatched.Core.Fighters;
 //A player's main character. If it is defeated, the game ends
 public class Hero : Fighter
 {
+    public int MaxHealth { get; }
     public int MoveValue { get; }
     public int MaxHandSize { get; }
     public Sidekick? Sidekick { get; private set; }
@@ -14,6 +15,7 @@ public class Hero : Fighter
     public Hero(string name, Player owner, int maxHealth, int moveValue, bool isRanged, int maxHandSize = 5)
         : base(name, owner, maxHealth, isRanged)
     {
+        MaxHealth = maxHealth;
         MoveValue = moveValue;
         MaxHandSize = maxHandSize;
     }
