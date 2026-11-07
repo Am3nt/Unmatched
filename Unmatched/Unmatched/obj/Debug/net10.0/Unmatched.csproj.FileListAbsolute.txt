@@ -1,0 +1,5 @@
+C:\Users\User\Documents\GitHub\Szoft_Projekt\Unmatched\Unmatched\obj\Debug\net10.0\Unmatched.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\GitHub\Szoft_Projekt\Unmatched\Unmatched\obj\Debug\net10.0\Unmatched.AssemblyInfoInputs.cache
+C:\Users\User\Documents\GitHub\Szoft_Projekt\Unmatched\Unmatched\obj\Debug\net10.0\Unmatched.AssemblyInfo.cs
+C:\Users\User\Documents\GitHub\Szoft_Projekt\Unmatched\Unmatched\obj\Debug\net10.0\Unmatched.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\Szoft_Projekt\Unmatched\Unmatched\obj\Debug\net10.0\Unmatched.sourcelink.json

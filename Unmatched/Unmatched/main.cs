@@ -1,1 +1,1 @@
-﻿Console.WriteLine("Hello, World!");
+﻿await Unmatched.Demo.DemoGame.RunAsync();

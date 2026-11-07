@@ -9,10 +9,10 @@ public class Sidekick : Fighter
 
     public override bool EndsGameWhenDefeated => false;
 
-    public Sidekick(string name, Hero master, int maxHealth, bool isRanged)
-        : base(name, master.Owner, maxHealth, isRanged)
+    public Sidekick(string name, Hero master, int maxHealth, int moveValue, bool isRanged)
+        : base(name, master.Owner, maxHealth, moveValue, isRanged)
     {
         Master = master;
-        master.AssignSidekick(this);
+        master.AddSidekick(this);
     }
 }

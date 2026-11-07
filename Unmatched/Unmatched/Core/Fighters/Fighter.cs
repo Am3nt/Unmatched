@@ -14,6 +14,10 @@ public abstract class Fighter
     public int MaxHealth { get; }
     public int CurrentHealth { get; private set; }
     public bool IsRanged { get; }
+
+    //VÁLTOZÁS: a mozgásérték a közös ősben van, mert a sidekickek is mozognak (Maneuver)
+    public int MoveValue { get; }
+
     public Space? Space { get; private set; }
 
     public bool IsDefeated => CurrentHealth <= 0;
@@ -24,14 +28,16 @@ public abstract class Fighter
     //Raised once, when health first reaches 0
     public event Action<Fighter>? Defeated;
 
-    protected Fighter(string name, Player owner, int maxHealth, bool isRanged)
+    protected Fighter(string name, Player owner, int maxHealth, int moveValue, bool isRanged)
     {
         if (maxHealth <= 0) throw new ArgumentOutOfRangeException(nameof(maxHealth));
+        if (moveValue < 0) throw new ArgumentOutOfRangeException(nameof(moveValue));
 
         Name = name;
         Owner = owner;
         MaxHealth = maxHealth;
         CurrentHealth = maxHealth;
+        MoveValue = moveValue;
         IsRanged = isRanged;
     }
 
