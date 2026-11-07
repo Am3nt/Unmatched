@@ -8,3 +8,7 @@ DataBaseTools/node_modules/
 .vs/VSWorkspaceState.json
 .vs/VSWorkspaceState.json
 *.vsidx
+bin/
+obj/
+*.user
+.kilo/
