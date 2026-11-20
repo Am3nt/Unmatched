@@ -10,8 +10,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- a UI mappa régi build-mellékterméke ne kerüljön a fordításba -->
-		<Compile Remove="UI/obj/**;UI/bin/**" />
+		<None Update="Data\Maps\*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
