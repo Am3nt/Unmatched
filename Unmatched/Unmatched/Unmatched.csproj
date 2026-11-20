@@ -14,4 +14,8 @@
 		<Compile Remove="UI/obj/**;UI/bin/**" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Google.Cloud.Firestore" Version="4.7.0" />
+	</ItemGroup>
+
 </Project>
