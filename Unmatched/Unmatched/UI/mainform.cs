@@ -9,7 +9,7 @@ public class MainForm : Form
 {
     private readonly IRoomService _rooms;
 
-    public MainForm() : this(new StubRoomService()) { }
+    public MainForm() : this(new RealtimeRoomService()) { }
 
     public MainForm(IRoomService rooms)
     {

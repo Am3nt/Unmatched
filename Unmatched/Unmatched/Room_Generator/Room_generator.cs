@@ -1,67 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+using Unmatched.UI.Services;
 
 namespace Unmatched.Room_Generator
 {
     internal class Room_generator
     {
+        private const string HostUserId = "U_0001";
+
         private readonly IDatabaseClient _dbClient;
 
-        // Constructor
         public Room_generator(IDatabaseClient dbClient)
         {
             _dbClient = dbClient;
         }
 
-        // The room generator function
-        public async Task<string> CreateRoomAsync(string hostUsername, string chosenHero, string heroSidekick, string mapId)
+        /// <summary>
+        /// Új szoba létrehozása és mentése. A hős és a sidekick opcionális: a UI "Create" gombja még
+        /// csak nevet kér, a hőst a játékos később (lobbyban) választja.
+        /// </summary>
+        public async Task<string> CreateRoomAsync(string hostUsername, string mapId,
+                                                  string? chosenHero = null, string? heroSidekick = null)
         {
+            // A UI ugyanezt a kódformátumot (RoomCode) ellenőrzi csatlakozáskor.
             string roomCode;
-            bool isDuplicate;
-            Random random = new Random();
-
             do
             {
-                string randomNumbers = random.Next(0, 10000).ToString("D4");
-                roomCode = $"R_{randomNumbers}";
-                isDuplicate = await _dbClient.RoomExistsAsync(roomCode);
+                roomCode = RoomCode.Generate();
+            } while (await _dbClient.RoomExistsAsync(roomCode));
 
-            } while (isDuplicate);
+            var room = new RoomData { MapId = mapId };
 
-            string hostUserId = "U_0001";
-
-            var newRoom = new RoomData
+            room.Users[HostUserId] = new UserData
             {
-                MapId = mapId,
-                Heroes = new Dictionary<string, HeroData>
-                {
-                    { chosenHero, new HeroData { SidekickId = heroSidekick, Values = new UnitValues { Health = 1, Position = 1 } } }
-                },
-                Sidekicks = new Dictionary<string, SidekickData>
-                {
-                    { heroSidekick, new SidekickData { HeroId = chosenHero, Values = new UnitValues { Health = 1, Position = 1 } } }
-                },
-                Users = new Dictionary<string, UserData>
-                {
-                    { hostUserId, new UserData { Name = hostUsername, Hero = chosenHero, Sidekick = heroSidekick } }
-                }
+                Name = hostUsername,
+                Hero = chosenHero ?? "",
+                Sidekick = heroSidekick ?? ""
             };
 
-            await _dbClient.SaveRoomAsync(roomCode, newRoom);
+            // A Realtime Database nem tárol üres objektumot, ezért hős nélkül a "heroes"/"sidekicks" ág meg sem jelenik.
+            if (!string.IsNullOrEmpty(chosenHero))
+            {
+                room.Heroes[chosenHero] = new HeroData
+                {
+                    SidekickId = heroSidekick ?? "",
+                    Values = new UnitValues { Health = 1, Position = 1 }   // ideiglenes kezdőérték
+                };
 
+                if (!string.IsNullOrEmpty(heroSidekick))
+                {
+                    room.Sidekicks[heroSidekick] = new SidekickData
+                    {
+                        HeroId = chosenHero,
+                        Values = new UnitValues { Health = 1, Position = 1 }
+                    };
+                }
+            }
+
+            await _dbClient.SaveRoomAsync(roomCode, room);
             return roomCode;
         }
     }
 
-    // --- Data Models & Interfaces (Placed below the main class) ---
+    // --- Data Models & Interfaces ---
 
     public class RoomData
     {
         [JsonPropertyName("map_id")]
-        public string MapId { get; set; }
+        public string MapId { get; set; } = "";
 
         [JsonPropertyName("heroes")]
         public Dictionary<string, HeroData> Heroes { get; set; } = new();
@@ -76,19 +81,19 @@ namespace Unmatched.Room_Generator
     public class HeroData
     {
         [JsonPropertyName("sidekick_id")]
-        public string SidekickId { get; set; }
+        public string SidekickId { get; set; } = "";
 
         [JsonPropertyName("values")]
-        public UnitValues Values { get; set; }
+        public UnitValues Values { get; set; } = new();
     }
 
     public class SidekickData
     {
         [JsonPropertyName("hero_id")]
-        public string HeroId { get; set; }
+        public string HeroId { get; set; } = "";
 
         [JsonPropertyName("values")]
-        public UnitValues Values { get; set; }
+        public UnitValues Values { get; set; } = new();
     }
 
     public class UnitValues
@@ -103,13 +108,13 @@ namespace Unmatched.Room_Generator
     public class UserData
     {
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
 
         [JsonPropertyName("hero")]
-        public string Hero { get; set; }
+        public string Hero { get; set; } = "";
 
         [JsonPropertyName("sidekick")]
-        public string Sidekick { get; set; }
+        public string Sidekick { get; set; } = "";
     }
 
     public interface IDatabaseClient
